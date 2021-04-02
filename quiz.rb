@@ -1,3 +1,5 @@
+require "tty-prompt"
+
 
 class Question
     attr_accessor :prompt, :answer
@@ -15,11 +17,15 @@ questions = [
     Question.new(p2, "Kanye")
 ]
 
-puts "What's your name?"
+pastel = Pastel.new
+
+puts pastel.cyan("What's your name?")
 answer = gets.chomp
-puts "\nHi #{answer}! Let's see how well you know your Trump and Kayne.\nTell me who tweeted the following.\n"
+puts pastel.yellow ("\nHi #{answer}! Let's see how well you know your Trump and Kayne.\n")
+puts pastel.yellow.bold ("Tell me who tweeted the following.\n")
 
 def run_quiz (questions)
+    pastel = Pastel.new
     answer = ""
     score = 0
     for question in questions 
@@ -27,22 +33,31 @@ def run_quiz (questions)
         answer = gets.chomp()
         if answer == question.answer
             score += 1
-        puts "Correct! Your score is #{score}"
+        puts pastel.green ("Correct! Your score is #{score}")
         else 
-            puts "Nope! Sorry"
+            puts pastel.red ("Nope! Sorry")
         end
-        
-    end
-    puts ( "\nThat's the end of the quiz questions. You got " + score.to_s + "/" + questions.length().to_s )
+end
+
+
+# prompt = TTY::Prompt.new
+# greeting = 'What is the capital of Scotland?'
+# choices = %w(Edinburgh Glasgow)
+# answer = prompt.select(greeting, choices)
+# 'do something' if answer == choices[0]
+# end
+    
+# Final score    
+puts ( "\nThat's the end of the quiz questions. You got " + score.to_s + "/" + questions.length().to_s )
     if score > questions.length / 2
-        puts "Great!"
-    elsif score > questions.length / 4
-        puts "Terrible!"
+        puts "😄Great!😄"
     elsif score == 0
         puts "Dude.." 
     else
         puts "Keep working on it." 
     end
 end
+
+
 
 run_quiz (questions)
