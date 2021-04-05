@@ -22,8 +22,8 @@ questions = [
 pastel = Pastel.new
 
 puts pastel.cyan("What's your name?")
-answer = gets.chomp
-puts pastel.yellow ("\nHi #{answer}! Let's see how well you know your Trump and Kayne.\n")
+name = gets.chomp
+puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 puts pastel.yellow.bold ("Tell me who tweeted the following.\n")
 
 # Runs questions
@@ -42,14 +42,6 @@ def run_quiz (questions)
         end
 end
 
-
-
-# prompt = TTY::Prompt.new
-# greeting = 'What is the capital of Scotland?'
-# choices = %w(Edinburgh Glasgow)
-# answer = prompt.select(greeting, choices)
-# 'do something' if answer == choices[0]
-# end
     
 # Total score question  
 pastel = Pastel.new
@@ -63,26 +55,32 @@ puts pastel.magenta( "\nThat's the end of the quiz questions. You got " + score.
     end
 
     # gamble question
-    puts ( "\nYour total is " + score.to_s + ". Would you like to gamble these points?\nIf you're right, you'll double your points.\nIf your wrong, you'll lose everything...\nType Yes or No" )
+    puts ( "\nYour total score is " + score.to_s + ". Would you like to gamble these points?\nIf you're right, you'll double your points.\nIf you're wrong, you'll lose everything...\nType Yes or No" )
     answer_gamble = gets.chomp
-    if answer_gamble = "Yes"
-        puts "\nWho has more followers? Trump or Kanye?"
+    if answer_gamble == "Yes"
+        puts "\nWho has more Twitter followers? Trump or Kanye?"
         answer_final = gets.chomp
             if answer_final == "Trump"
                 puts "\nNope! He no longer has a Twitter account, remember?"
                 score = 0
-                puts pastel.magenta "Your final score is 0"
+                puts pastel.magenta.bold "Your final score is 0"
             elsif answer_final == "Kanye"
                 puts "\nYep! Trump no longer has a Twitter account, so has no followers"
                 score = score * 2
-                puts pastel.magenta ("Your final score is " + score.to_s )
+                puts pastel.magenta.bold ("Your final score is " + score.to_s )
+                puts "Thanks for playing #{name}"
                 # put error message in here?
             end
-    else puts "👋"
+    else puts "👋 Thanks for playing #{name}"
     end
 end
 
-
+prompt = TTY::Prompt.new
+greeting = 'What is the capital of Scotland?'
+choices = %w(Edinburgh Glasgow)
+answer = prompt.select(greeting, choices)
+'do something' if answer == choices[0]
+end
 
 
 run_quiz (questions)
