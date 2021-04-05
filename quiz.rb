@@ -1,4 +1,5 @@
 require "tty-prompt"
+require "./questions.rb"
 
 # Question class
 class Question
@@ -8,15 +9,6 @@ class Question
         @answer = answer
     end
 end
-
-# Question list
-p1 = "\n'I have never seen a thin person drinking Diet Coke.' Who said it? \n\nTrump       Kanye"
-p2 = "\n'For anyone that has money they know the first rule is to use other people's money.' Who said it? \nTrump       Kanye"
-
-questions = [
-    Question.new(p1, "Trump"),
-    Question.new(p2, "Kanye")
-]
 
 # Intro text
 pastel = Pastel.new
@@ -75,15 +67,13 @@ puts pastel.magenta( "\nThat's the end of the quiz questions. You got " + score.
     end
 end
 
-prompt = TTY::Prompt.new
-greeting = 'What is the capital of Scotland?'
-choices = %w(Edinburgh Glasgow)
-answer = prompt.select(greeting, choices)
-'do something' if answer == choices[0]
-end
 
+
+# prompt = TTY::Prompt.new
+# greeting = 'What is the capital of Scotland?'
+# choices = %w(Edinburgh Glasgow)
+# answer = prompt.select(greeting, choices)
+# 'do something' if answer == choices[0]
 
 run_quiz (questions)
-
-
 
