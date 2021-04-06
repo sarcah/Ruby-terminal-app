@@ -23,6 +23,7 @@ puts pastel.yellow.bold ("Tell me who tweeted the following.\nType 'Trump' or 'K
 # Runs questions
 questions = question_list
 
+# when /^l(ist)*/
 
     def run_quiz (questions)
         pastel = Pastel.new
@@ -30,7 +31,7 @@ questions = question_list
         score = 0
         for question in questions 
             puts pastel.italic (question.prompt)
-            answer = gets.chomp()
+            answer = gets.chomp().capitalize
             if answer == question.answer
                 score += 1
             puts pastel.green ("Correct! Your score is #{score}")
@@ -54,34 +55,28 @@ puts pastel.magenta.bold( "\nThat's the end of the quiz questions. You got " + s
         puts "Keep working on it 👍" 
     end
 
-    # gamble question
-    puts ( "\nYour total score is " + score.to_s + ". Would you like to gamble these points?\nIf you're right, you'll double your points.\nIf you're wrong, you'll lose everything...\nType Yes or No" )
-    answer_gamble = gets.chomp
-    if answer_gamble == "Yes"
+# gamble question
+prompt = TTY::Prompt.new
+greeting = ( "\nYour total score is " + score.to_s + ". Would you like to gamble?\nIf you're right, you'll double your points.\nIf you're wrong, you'll lose everything...\nSelect Yes or No" )
+choices = %w(Yes No)
+answer = prompt.select(greeting, choices)
+    if answer == choices[0]
         puts "\nWho has more Twitter followers? Trump or Kanye?"
-        answer_final = gets.chomp
-            if answer_final == "Trump"
-                puts "\nNope! He no longer has a Twitter account, remember?"
-                score = 0
-                puts pastel.magenta.bold "Your final score is 0"
-            elsif answer_final == "Kanye"
-                puts "\nYep! Trump no longer has a Twitter account, so has no followers"
-                score = score * 2
-                puts pastel.magenta.bold ("Your final score is " + score.to_s )
-                puts "\n👋 Good gambling! Thanks for playing #{name}"
-                # put error message in here?
-            end
-    else puts "\n👋 Thanks for playing #{name}\n"
+            answer_final = gets.chomp.capitalize
+                if answer_final == "Trump"
+                    puts "\nNope! He no longer has a Twitter account, remember?"
+                    score = 0
+                    puts pastel.magenta.bold "Your final score is 0"
+                elsif answer_final == "Kanye"
+                    puts "\nYep! Trump no longer has a Twitter account, so has no followers"
+                    score = score * 2
+                    puts pastel.magenta.bold ("Your final score is " + score.to_s )
+                    puts "\n👋 Good gambling! Thanks for playing #{name}"
+                end
+    else puts "\n👋 Thanks for playing #{name}"
     end
+    
 
-
-
-
-# prompt = TTY::Prompt.new
-# greeting = 'What is the capital of Scotland?'
-# choices = %w(Edinburgh Glasgow)
-# answer = prompt.select(greeting, choices)
-# 'do something' if answer == choices[0]
 
 
 
