@@ -17,17 +17,18 @@ pastel = Pastel.new
 
 puts pastel.cyan.bold("What's your name?")
 name = gets.chomp
+def invalid_name
+    begin
+        name = " "
+    rescue StandardError => error
+        puts "Name cannot be blank"
+    end
+end
 puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 box = TTY::Box.frame "Tell me who tweeted the following.", "Type 'Trump' or 'Kanye' for each question", padding: 1, align: :center
 puts box
 puts pastel.yellow ("\nGet the spelling right, or you won't get the point!")
-def invalid_name
-    begin
-        name = nil
-    rescue StandardError
-        puts "Name cannot be blank"
-    end
-end
+
 
 
 # Runs questions
