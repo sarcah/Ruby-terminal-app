@@ -1,5 +1,5 @@
 require "tty-prompt"
-require "./questions.rb"
+require_relative "./questions.rb"
 
 # Question class
 class Question
@@ -18,7 +18,10 @@ name = gets.chomp
 puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 puts pastel.yellow.bold ("Tell me who tweeted the following.\n")
 
+
+
 # Runs questions
+module questions
 def run_quiz (questions)
     pastel = Pastel.new
     answer = ""
@@ -32,6 +35,7 @@ def run_quiz (questions)
         else 
             puts pastel.red ("Nope! Sorry")
         end
+    end
 end
 
     
@@ -77,3 +81,5 @@ end
 
 run_quiz (questions)
 
+# Credit for quiz: https://edition.cnn.com/interactive/2016/02/politics/trump-kanye-who-tweeted/
+# accessed 6th April 2021, author is CNN.
