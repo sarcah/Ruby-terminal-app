@@ -13,35 +13,39 @@ end
 # Intro text
 pastel = Pastel.new
 
-puts pastel.cyan("What's your name?")
+puts pastel.cyan.bold("What's your name?")
 name = gets.chomp
-puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
-puts pastel.yellow.bold ("Tell me who tweeted the following.\n")
+puts pastel.yellow.bold ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
+puts pastel.yellow.bold ("Tell me who tweeted the following.\nType 'Trump' or 'Kanye' for each question.\n")
 
 
 
 # Runs questions
-module questions
-def run_quiz (questions)
-    pastel = Pastel.new
-    answer = ""
-    score = 0
-    for question in questions 
-        puts question.prompt
-        answer = gets.chomp()
-        if answer == question.answer
-            score += 1
-        puts pastel.green ("Correct! Your score is #{score}")
-        else 
-            puts pastel.red ("Nope! Sorry")
-        end
-    end
-end
+questions = question_list
 
+
+    def run_quiz (questions)
+        pastel = Pastel.new
+        answer = ""
+        score = 0
+        for question in questions 
+            puts pastel.italic (question.prompt)
+            answer = gets.chomp()
+            if answer == question.answer
+                score += 1
+            puts pastel.green ("Correct! Your score is #{score}")
+            else 
+                puts pastel.red ("Nope! Sorry")
+            end
+        end
+        score
+    end
+
+score = run_quiz (questions)
     
 # Total score question  
 pastel = Pastel.new
-puts pastel.magenta( "\nThat's the end of the quiz questions. You got " + score.to_s + "/" + questions.length().to_s )
+puts pastel.magenta.bold( "\nThat's the end of the quiz questions. You got " + score.to_s + "/" + questions.length().to_s )
     if score > questions.length / 2
         puts "Great! 👏"
     elsif score == 0
@@ -64,12 +68,12 @@ puts pastel.magenta( "\nThat's the end of the quiz questions. You got " + score.
                 puts "\nYep! Trump no longer has a Twitter account, so has no followers"
                 score = score * 2
                 puts pastel.magenta.bold ("Your final score is " + score.to_s )
-                puts "Thanks for playing #{name}"
+                puts "\n👋 Good gambling! Thanks for playing #{name}"
                 # put error message in here?
             end
-    else puts "👋 Thanks for playing #{name}"
+    else puts "\n👋 Thanks for playing #{name}\n"
     end
-end
+
 
 
 
@@ -79,7 +83,7 @@ end
 # answer = prompt.select(greeting, choices)
 # 'do something' if answer == choices[0]
 
-run_quiz (questions)
+
 
 # Credit for quiz: https://edition.cnn.com/interactive/2016/02/politics/trump-kanye-who-tweeted/
 # accessed 6th April 2021, author is CNN.
