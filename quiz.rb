@@ -1,6 +1,7 @@
-require "tty-prompt"
 require_relative "./questions.rb"
+require "tty-prompt"
 require "tty-link"
+require "tty-box"
 
 # Question class
 class Question
@@ -16,8 +17,10 @@ pastel = Pastel.new
 
 puts pastel.cyan.bold("What's your name?")
 name = gets.chomp
-puts pastel.yellow.bold ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
-puts pastel.yellow.bold ("Tell me who tweeted the following.\nType 'Trump' or 'Kanye' for each question.\n")
+puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
+box = TTY::Box.frame "Tell me who tweeted the following.", "Type 'Trump' or 'Kanye' for each question", padding: 1, align: :center
+puts box
+puts pastel.yellow ("\nGet the spelling right, or you won't get the point!")
 def invalid_name
     begin
         name = nil
@@ -35,7 +38,7 @@ questions = question_list
         answer = ""
         score = 0
         for question in questions 
-            puts pastel.italic (question.prompt)
+            puts pastel.italic.bold (question.prompt)
             answer = gets.chomp().capitalize
             if answer == question.answer
                 score += 1
