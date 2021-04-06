@@ -17,13 +17,10 @@ pastel = Pastel.new
 
 puts pastel.cyan.bold("What's your name?")
 name = gets.chomp
-def invalid_name
-    begin
-        name = " "
-    rescue StandardError => error
-        puts "Name cannot be blank"
-    end
-end
+
+# while true
+#     puts fjfj
+
 puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 box = TTY::Box.frame "Tell me who tweeted the following.", "Type 'Trump' or 'Kanye' for each question", padding: 1, align: :center
 puts box
