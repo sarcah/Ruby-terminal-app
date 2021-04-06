@@ -1,5 +1,6 @@
 require "tty-prompt"
 require_relative "./questions.rb"
+require "tty-link"
 
 # Question class
 class Question
@@ -17,13 +18,17 @@ puts pastel.cyan.bold("What's your name?")
 name = gets.chomp
 puts pastel.yellow.bold ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 puts pastel.yellow.bold ("Tell me who tweeted the following.\nType 'Trump' or 'Kanye' for each question.\n")
-
+def invalid_name
+    begin
+        name = nil
+    rescue StandardError
+        puts "Name cannot be blank"
+    end
+end
 
 
 # Runs questions
 questions = question_list
-
-# when /^l(ist)*/
 
     def run_quiz (questions)
         pastel = Pastel.new
@@ -55,7 +60,7 @@ puts pastel.magenta.bold( "\nThat's the end of the quiz questions. You got " + s
         puts "Keep working on it 👍" 
     end
 
-# gamble question
+# Gamble question
 prompt = TTY::Prompt.new
 greeting = ( "\nYour total score is " + score.to_s + ". Would you like to gamble?\nIf you're right, you'll double your points.\nIf you're wrong, you'll lose everything...\nSelect Yes or No" )
 choices = %w(Yes No)
@@ -72,13 +77,12 @@ answer = prompt.select(greeting, choices)
                     score = score * 2
                     puts pastel.magenta.bold ("Your final score is " + score.to_s )
                     puts "\n👋 Good gambling! Thanks for playing #{name}"
+                else puts "\nThanks anyway!"
                 end
     else puts "\n👋 Thanks for playing #{name}"
     end
     
 
+puts "Credit for quiz:"
+puts TTY::Link.link_to("CNN quiz", "https://edition.cnn.com/interactive/2016/02/politics/trump-kanye-who-tweeted/")
 
-
-
-# Credit for quiz: https://edition.cnn.com/interactive/2016/02/politics/trump-kanye-who-tweeted/
-# accessed 6th April 2021, author is CNN.
