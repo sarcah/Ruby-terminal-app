@@ -12,7 +12,7 @@ class Question
     end
 end
 
-# Intro text
+# Input name
 pastel = Pastel.new
 count = 0
 begin
@@ -26,6 +26,7 @@ rescue NameError => error
     return
 end
 
+# Intro text
 puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 box = TTY::Box.frame "Tell me who tweeted the following.", "Type 'Trump' or 'Kanye' for each question", padding: 1, align: :center
 puts box
