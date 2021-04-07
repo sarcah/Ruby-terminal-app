@@ -14,12 +14,17 @@ end
 
 # Intro text
 pastel = Pastel.new
-
-puts pastel.cyan.bold("What's your name?")
-name = gets.chomp
-
-# while true
-#     puts fjfj
+count = 0
+begin
+    count += 1
+    puts pastel.cyan.bold("What's your name?")
+    name = gets.chomp
+    raise NameError, "Name cannot be empty" if name.empty?
+rescue NameError => error 
+    puts "Name cannot be empty"
+    retry if count <3
+    return
+end
 
 puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 box = TTY::Box.frame "Tell me who tweeted the following.", "Type 'Trump' or 'Kanye' for each question", padding: 1, align: :center
@@ -78,7 +83,7 @@ answer = prompt.select(greeting, choices)
                     score = score * 2
                     puts pastel.magenta.bold ("Your final score is " + score.to_s )
                     puts "\n👋 Good gambling! Thanks for playing #{name}"
-                else puts "\nThanks anyway!"
+                else puts "\nThanks anyway #{name}!"
                 end
     else puts "\n👋 Thanks for playing #{name}"
     end
