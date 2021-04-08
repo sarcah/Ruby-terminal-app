@@ -5,7 +5,7 @@ require "tty-prompt"
 require "tty-link"
 require "tty-box"
 
-# Question class
+# Question class 
 class Question
     attr_accessor :prompt, :answer
     def initialize (prompt, answer)
