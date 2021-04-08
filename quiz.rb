@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative "./questions.rb"
 require "tty-prompt"
 require "tty-link"
