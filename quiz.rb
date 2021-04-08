@@ -25,7 +25,7 @@ rescue NameError => error
     retry if count <3
     return
 end
-
+ 
 # Intro text
 puts pastel.yellow ("\nHi #{name}! Let's see how well you know your Trump and Kayne.\n")
 box = TTY::Box.frame "Tell me who tweeted the following.", "Type 'Trump' or 'Kanye' for each question", padding: 1, align: :center
