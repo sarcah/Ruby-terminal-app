@@ -65,7 +65,7 @@ puts pastel.magenta.bold( "\nThat's the end of the quiz questions. You got " + s
         puts "Dude... 😳" 
     else
         puts "Keep working on it 👍" 
-    end
+    end 
 
 # Gamble question
 prompt = TTY::Prompt.new
