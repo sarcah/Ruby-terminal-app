@@ -13,3 +13,5 @@ gem "tty-link", "~> 0.1.1"
 gem "tty-box", "~> 0.7.0"
 
 gem "pastel", "~> 0.8.0"
+
+gem "rspec", "~> 3.10"
