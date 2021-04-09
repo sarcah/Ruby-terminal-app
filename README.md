@@ -40,3 +40,35 @@ As stated in the question above, the error handling for ‘name’ is done throu
 
 ####Control flow diagram for the app
 
+![Control Flow Diagram](images/cfd.png)<br><br>
+
+####Implementation plan - Trello
+Link to the live Trello board is [here](https://trello.com/b/eNz0zVIf/t1a3)
+
+The below image was of my initial Trello plan, which allowed me to organise tasks (including some wishlist items in backlog), ensuring all items were completed in a timely manner to hand assignment in on time, and that no requirements were missed. Time sensitive items were given a due date. 
+
+![Trello Screenshot 1](images/trello1.png)
+As I moved through the assignment, the Trello board was updated with new tasks, new dates and labels added, a further screenshot is below. Rather than adding checklists for each feature, I used more individual features (like having seven individual entries around documentation) as this allowed me to break up the tasks into more achievable goals and to more easily see what still needed to be done (and to get the psychological win of being able to move more items to the Done list)
+
+![Trello Labels](images/labels.png)
+
+![Trello Screenshot 2](images/trello2.png)<br><br>
+
+####System requirements
+The only system requirement is a computer that has bash script capability.<br><br>
+
+####Installation of the application
+•	Follow these [instructions](https://www.ruby-lang.org/en/documentation/installation/) to download and install Ruby on your computer.
+•	Download the Zip file and extract it onto your computer, or clone the Github repository.
+•	Open your terminal and run the following command after navigating to the projects main folder.
+```
+$ gem install bundler
+```
+•	After bundle is installed, run below command:
+```
+$ bundle install
+```
+•	Then to launch the application enter below:
+```
+$ ./run_app.sh
+```
