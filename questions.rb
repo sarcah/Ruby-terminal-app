@@ -2,6 +2,8 @@
 
 def question_list
 
+    test = "Hello World"
+
     p1 = "\n'I have never seen a thin person drinking Diet Coke.'"
     p2 = "\n'For anyone that has money they know the first rule is to use other people's money.'"
     p3 = "\n'We want to innovate and we will win some day.'"

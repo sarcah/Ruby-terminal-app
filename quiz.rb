@@ -3,6 +3,8 @@ require "tty-prompt"
 require "tty-link"
 require "tty-box"
 
+test = "Hello World"
+
 # Question class 
 class Question
     attr_accessor :prompt, :answer
@@ -89,7 +91,7 @@ answer = prompt.select(greeting, choices)
     else puts "\n👋 Thanks for playing #{name}"
     end
     
-
+# Credit links
 puts "Credit for quiz:"
 puts TTY::Link.link_to("CNN quiz", "https://edition.cnn.com/interactive/2016/02/politics/trump-kanye-who-tweeted/")
 
