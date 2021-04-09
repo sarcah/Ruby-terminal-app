@@ -1,18 +1,4 @@
-require_relative "./questions.rb"
-require "tty-prompt"
-require "tty-link"
-require "tty-box"
-
-test = "Hello World"
-
-# Question class 
-class Question
-    attr_accessor :prompt, :answer
-    def initialize (prompt, answer)
-        @prompt = prompt
-        @answer = answer
-    end
-end
+require_relative "./quiz_class.rb"
 
 # Input name
 pastel = Pastel.new
@@ -92,6 +78,6 @@ answer = prompt.select(greeting, choices)
     end
     
 # Credit links
-puts "Credit for quiz:"
+puts "\n\nCredit for quiz:"
 puts TTY::Link.link_to("CNN quiz", "https://edition.cnn.com/interactive/2016/02/politics/trump-kanye-who-tweeted/")
 
